@@ -1,11 +1,10 @@
 import pandas as pd
 
-# Load dataset
-df = pd.read_csv("sales_data.csv")
+# ==========================================
+# 1. Load Dataset
+# ==========================================
 
-# -----------------------------
-# 1. Data Overview
-# -----------------------------
+df = pd.read_csv("sales_data.csv")
 
 print("Dataset Shape:")
 print(df.shape)
@@ -17,9 +16,9 @@ print("\nDuplicate Rows:")
 print(df.duplicated().sum())
 
 
-# -----------------------------
-# 2. Basic KPIs
-# -----------------------------
+# ==========================================
+# 2. Basic Sales KPIs
+# ==========================================
 
 total_sales = df["Sales"].sum()
 total_profit = df["Profit"].sum()
@@ -29,18 +28,18 @@ median_sales = df["Sales"].median()
 
 profit_margin = (total_profit / total_sales) * 100
 
-print("\n--- Sales KPIs ---")
+print("\n========== SALES KPIs ==========")
 print("Total Sales:", total_sales)
 print("Total Profit:", total_profit)
-print("Average Sales:", avg_sales)
-print("Average Profit:", avg_profit)
+print("Average Sales:", round(avg_sales, 2))
+print("Average Profit:", round(avg_profit, 2))
 print("Median Sales:", median_sales)
-print("Profit Margin:", profit_margin)
+print("Overall Profit Margin:", round(profit_margin, 2), "%")
 
 
-# -----------------------------
+# ==========================================
 # 3. Product Analysis
-# -----------------------------
+# ==========================================
 
 product_analysis = df.groupby("Product").agg(
     Sales=("Sales", "sum"),
@@ -54,13 +53,13 @@ product_analysis["Profit_Margin"] = (
     product_analysis["Sales"] * 100
 )
 
-print("\n--- Product Analysis ---")
-print(product_analysis)
+print("\n========== PRODUCT ANALYSIS ==========")
+print(product_analysis.round(2))
 
 
-# -----------------------------
+# ==========================================
 # 4. City Analysis
-# -----------------------------
+# ==========================================
 
 city_analysis = df.groupby("City").agg(
     Sales=("Sales", "sum"),
@@ -69,13 +68,38 @@ city_analysis = df.groupby("City").agg(
     Orders=("Order_ID", "count")
 ).sort_values("Sales", ascending=False)
 
-print("\n--- City Analysis ---")
-print(city_analysis)
+city_analysis["Profit_Margin"] = (
+    city_analysis["Profit"] /
+    city_analysis["Sales"] * 100
+)
+
+print("\n========== CITY ANALYSIS ==========")
+print(city_analysis.round(2))
 
 
-# -----------------------------
-# 5. Monthly Analysis
-# -----------------------------
+# ==========================================
+# 5. Customer Analysis
+# ==========================================
+
+customer_analysis = df.groupby("Customer").agg(
+    Sales=("Sales", "sum"),
+    Profit=("Profit", "sum"),
+    Orders=("Order_ID", "count"),
+    Quantity=("Quantity", "sum")
+).sort_values("Sales", ascending=False)
+
+customer_analysis["AOV"] = (
+    customer_analysis["Sales"] /
+    customer_analysis["Orders"]
+)
+
+print("\n========== CUSTOMER ANALYSIS ==========")
+print(customer_analysis.round(2))
+
+
+# ==========================================
+# 6. Monthly Analysis
+# ==========================================
 
 df["Order_Date"] = pd.to_datetime(df["Order_Date"])
 
@@ -83,37 +107,70 @@ monthly_analysis = df.groupby(
     df["Order_Date"].dt.month_name()
 ).agg(
     Sales=("Sales", "sum"),
-    Profit=("Profit", "sum")
-)
-
-print("\n--- Monthly Analysis ---")
-print(monthly_analysis)
-
-
-# -----------------------------
-# 6. Payment Method Analysis
-# -----------------------------
-
-payment_analysis = df.groupby("Payment_Method").agg(
+    Profit=("Profit", "sum"),
     Orders=("Order_ID", "count"),
-    Sales=("Sales", "sum"),
-    Profit=("Profit", "sum")
+    Quantity=("Quantity", "sum")
 )
 
-print("\n--- Payment Method Analysis ---")
-print(payment_analysis)
+monthly_analysis["Profit_Margin"] = (
+    monthly_analysis["Profit"] /
+    monthly_analysis["Sales"] * 100
+)
+
+print("\n========== MONTHLY ANALYSIS ==========")
+print(monthly_analysis.round(2))
 
 
-# -----------------------------
-# 7. Top Orders
-# -----------------------------
+# ==========================================
+# 7. Top 5 Sales Orders
+# ==========================================
 
 top_orders = df.sort_values(
     "Sales",
     ascending=False
 ).head(5)
 
-print("\n--- Top 5 Orders ---")
-print(top_orders[
-    ["Order_ID", "Customer", "Product", "Sales", "Profit"]
-])
+print("\n========== TOP 5 SALES ORDERS ==========")
+
+print(
+    top_orders[
+        ["Order_ID", "Customer", "Product", "Sales", "Profit"]
+    ]
+)
+
+
+# ==========================================
+# 8. Top 5 Profit Orders
+# ==========================================
+
+top_profit_orders = df.sort_values(
+    "Profit",
+    ascending=False
+).head(5)
+
+print("\n========== TOP 5 PROFIT ORDERS ==========")
+
+print(
+    top_profit_orders[
+        ["Order_ID", "Customer", "Product", "Sales", "Profit"]
+    ]
+)
+
+
+# ==========================================
+# 9. High-Value Orders
+# ==========================================
+
+high_value_orders = df[
+    (df["Sales"] >= 50000) &
+    (df["Profit"] >= 7000)
+]
+
+print("\n========== HIGH-VALUE ORDERS ==========")
+print("Number of High-Value Orders:", len(high_value_orders))
+
+print(
+    high_value_orders[
+        ["Order_ID", "Customer", "Product", "Sales", "Profit"]
+    ]
+)
