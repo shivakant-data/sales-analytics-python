@@ -82,22 +82,19 @@ Analyzed sales and profit trends across:
 - February
 - March
 
-### 6. Payment Method Analysis
-
-Compared transaction performance across different payment methods.
-
 ---
 
-## 💡 Key Business Insights
+## 📌 Key Business Insights
 
-- Total sales generated were **₹867,500**.
-- Total profit was **₹129,800**.
-- Overall profit margin was approximately **14.96%**.
-- Laptop generated the highest product sales.
-- Product-level margins varied considerably across products.
-- Monthly sales and profit were compared to identify performance trends.
-- City-level analysis was used to understand differences in sales and profitability.
-- Payment-method analysis helped compare transaction performance.
+- 💰 Total sales were **₹867,500**, with total profit of **₹129,800** and an overall profit margin of **14.96%**.
+- 💻 **Laptop** generated the highest sales at **₹412,000** and the highest product profit at **₹56,600**.
+- ⌨️ **Keyboard, Headphones, and Mouse** had the highest product-level profit margin at **20%**.
+- 🏙️ **Bangalore** generated the highest city-level sales at **₹325,000**.
+- 📦 **Delhi** recorded the highest number of orders with **9 orders**.
+- 📈 **March** had the highest monthly sales at **₹304,500** and profit of **₹45,800**.
+- 📊 **February** had the highest monthly profit margin at **15.76%**.
+- 👤 **Neha** generated the highest customer sales at **₹137,000** and had an AOV of **₹45,666.67**.
+- 🏆 The highest-value order was **Order 2004**, with sales of **₹62,000**.
 
 ---
 
@@ -116,6 +113,9 @@ KPI Calculation
      ↓
 Product / City / Customer Analysis
      ↓
-Monthly & Payment Analysis
-     ↓
-Business Insights
+Monthly Analysis
+
+-----
+
+## 📊 Visualizations
+
