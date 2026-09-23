@@ -100,7 +100,6 @@ Analyzed sales and profit trends across:
 
 ## 📈 Data Analyst Workflow
 
-```text
 Raw Dataset
      ↓
 Data Cleaning
@@ -118,4 +117,18 @@ Monthly Analysis
 -----
 
 ## 📊 Visualizations
+### 💻 Sales by Product
 
+![Sales by Product](screenshots/sales_by_product.png)
+
+### 📈 Monthly Sales Trend
+
+![Monthly Sales Trend](screenshots/monthly_sales_trend.png)
+
+### 🏙️ Sales by City
+
+![Sales by City](screenshots/sales_by_city.png)
+
+### 💰 Sales vs Profit
+
+![Sales vs Profit](screenshots/sales_vs_profit.png)
