@@ -132,3 +132,39 @@ Monthly Analysis
 ### 💰 Sales vs Profit
 
 ![Sales vs Profit](screenshots/sales_vs_profit.png)
+
+
+## 📁 Project Structure
+
+```text
+sales-analytics-python/
+│
+├── README.md
+├── sales_analysis.py
+├── visualizations.py
+├── sales_data.csv
+├── requirements.txt
+│
+└── screenshots/
+    ├── sales_by_product.png
+    ├── monthly_sales_trend.png
+    ├── sales_by_city.png
+    └── sales_vs_profit.png
+
+## ▶️ How to Run
+**1. Clone the repository**  
+→ `git clone`  
+→ `cd`
+
+**2. Install dependencies**  
+→ `pip install`
+
+**3. Run the analysis**  
+→ `python sales_analysis.py`
+
+**4. Generate visualizations**  
+→ `python visualizations.py`
+
+```bash
+git clone https://github.com/shivakant-data/sales-analytics-python.git
+cd sales-analytics-python
