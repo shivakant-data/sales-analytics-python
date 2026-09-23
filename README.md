@@ -2,7 +2,7 @@
 
 ## 📌 Project Overview
 
-This project analyzes sales transaction data using Python and Pandas to understand sales performance, profitability, product performance, city performance, payment methods, and monthly trends.
+This project analyzes sales transaction data using Python and Pandas to understand sales performance, profitability, product performance, customer performance, city performance, and monthly trends.
 
 The project follows a practical Data Analyst workflow:
 
