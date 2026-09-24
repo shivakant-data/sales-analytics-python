@@ -152,19 +152,32 @@ sales-analytics-python/
     └── sales_vs_profit.png
 
 ## ▶️ How to Run
-**1. Clone the repository**  
-→ `git clone`  
-→ `cd`
 
-**2. Install dependencies**  
-→ `pip install`
-
-**3. Run the analysis**  
-→ `python sales_analysis.py`
-
-**4. Generate visualizations**  
-→ `python visualizations.py`
+### 1. Clone the repository
 
 ```bash
 git clone https://github.com/shivakant-data/sales-analytics-python.git
 cd sales-analytics-python
+```
+
+### 2. Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### 3. Run the analysis
+
+```bash
+python sales_analysis.py
+```
+
+### 4. Generate visualizations
+
+```bash
+python visualizations.py
+```
+
+The analysis script calculates sales, profit, margins, customer performance, product performance, city performance, and monthly trends.
+
+The visualization script generates four charts for the project.
